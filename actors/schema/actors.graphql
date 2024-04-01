@@ -1,0 +1,12 @@
+
+extend type Query {
+    actors: [Actor!]!
+    actor(name: String!): Actor!
+}
+
+type Actor @key(fields: "imdbId") {
+    id: ID!
+    name: String!
+    movieImdbIds: [String!]!
+    imdbId: String!
+}

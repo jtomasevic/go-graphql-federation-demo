@@ -1,0 +1,17 @@
+extend type Actor @key(fields: "imdbId"){
+    id: ID! @external
+    name: String! @external
+    movieImdbIds: [String!]! @external
+    imdbId: String! @external
+    movies :[Movie!]! @requires(fields: "id name movieImdbIds imdbId")
+}
+
+type Movie {
+    id: ID!
+    title: String!
+    imdbId: String!
+}
+
+extend type Query {
+    movies: [Movie!]!
+}
